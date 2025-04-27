@@ -18,42 +18,31 @@ To write a program to prepare EMI calculator using function without return type 
 ## PROGRAM
 ```
 #include <stdio.h>
-#include <math.h>
-void calculateEMI(float principal, float rate, int months)
- {
-    float emi, amt, r, t;
-    r = rate / (12 * 100);  
-    t = months;
-    emi = (principal * r * pow(1 + r, t)) / (pow(1 + r, t) - 1);
-    printf("The EMI for the loan is: %.2f\n", emi);
+#include<math.h>
+void emi(float p,float r,float n)
+{
+    r=r/(100*12);
+    n=n*12;
+    float emi=p*r*pow(1+r,n)/(pow(1+r,n)-1);
+    printf("Monthly EMI is= %.3f",emi);
 }
 int main()
 {
-    float principal, rate;
-    int months;
-    printf("Enter the principal amount: ");
-    scanf("%f", &principal);
-    printf("Enter the rate of interest (annual percentage): ");
-    scanf("%f", &rate);
-    printf("Enter the number of months: ");
-    scanf("%d", &months);
-    calculateEMI(principal, rate, months);
-    return 0;
+    float p,n,r;
+    scanf("%f %f %f",&p,&r,&n);
+    emi(p,r,n);
 }
 
-```
-## OUTPUT:
-```
-Enter the principal amount: 500000
-Enter the rate of interest (annual percentage): 10
-Enter the number of months: 12
-The EMI for the loan is: 43828.37
 
-Enter the principal amount: 1000000
-Enter the rate of interest (annual percentage): 8
-Enter the number of months: 24
-The EMI for the loan is: 46368.09
 ```
+
+
+## OUTPUT
+
+![Screenshot 2025-04-27 150352](https://github.com/user-attachments/assets/d15b6f9d-3da0-41ff-a814-e3ad3063745f)
+
+
+
 ## RESULT
 
 Thus the program to prepare EMI calculator using function without return type with arguments has been executed successfully
@@ -76,30 +65,34 @@ To write a C program to generate the Fibonacci series for the value 6.
 
 ## PROGRAM
 ```
-#include <stdio.h>
-int main()
- {
-    int n = 6; 
-    int first = 0, second = 1, next, i;
-    printf("Fibonacci series for %d terms: \n", n);
-    printf("%d %d ", first, second);
-    for (i = 3; i <= n; i++)
- {
-        next = first + second;
-        printf("%d ", next);
-        first = second;
-        second = next;
+#include<stdio.h>
+void fibonacci(int n)
+{
+    int temp=-1,a=1,b=0;
+    for (int i=1;i<=n;i++)
+    {
+        temp=a+b;
+        a=b;
+        b=temp;
+        printf("%d ",a);
+       
     }
-    
-    printf("\n");
-    return 0;
 }
+int main()
+{
+    int num;
+    scanf("%d",&num);
+    fibonacci(num);
+}
+
 ```
+
 ## OUTPUT
-```
-Fibonacci series for 6 terms: 
-0 1 1 2 3 5
-```
+
+![Screenshot 2025-04-27 150452](https://github.com/user-attachments/assets/cdc27f77-0a25-4bf3-8a0e-7ef322435607)
+
+
+
 
 ## RESULT
 Thus the program to generate the Fibonacci series for the value 6 has been executed successfully.
@@ -120,35 +113,27 @@ To write a C program to read n elements as input and print the last element of t
 
 ## PROGRAM
 ```
-#include <stdio.h>
+
+#include<stdio.h>
 int main()
- {
-    int n, i;
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
+{
+    int n,i;
+    scanf("%d",&n);
     int arr[n];
-    printf("Enter %d elements:\n", n);
-    for (i = 0; i < n; i++)
- {
-        scanf("%d", &arr[i]);
+    for (i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
     }
-    printf("The last element is: %d\n", arr[n - 1]);
-    
-    return 0;
+    if (n>0) printf("%d\n",arr[n-1]);
+    else printf(" ");   
 }
 ```
-## OUTPUT
-```
-Enter the number of elements: 5
-Enter 5 elements:
-10 20 30 40 50
-The last element is: 50
 
-Enter the number of elements: 3
-Enter 3 elements:
-1 2 3
-The last element is: 3
-```
+## OUTPUT
+
+![Screenshot 2025-04-27 150543](https://github.com/user-attachments/assets/34851039-ad90-4502-b85c-dc0c5777a8a6)
+
+
 
 ## RESULT
 Thus the program to read n elements as input and print the last element of the array has been executed successfully.
@@ -170,44 +155,26 @@ To write a C Program to count total number of positive elements in an array.
 
 ## PROGRAM
 ```
-#include <stdio.h>
-
-int main() {
-    int n, count = 0;
-    
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-    
-    int arr[n];
-    
-    printf("Enter %d elements:\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+#include<stdio.h>
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    int arr[n],count_pos=0,count_neg=0;
+    for (i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+        if (arr[i]>0) count_pos++;
+        else count_neg++;
     }
-    
-    for (int i = 0; i < n; i++) {
-        if (arr[i] > 0) {
-            count++;
-        }
-    }
-    
-    printf("Total number of positive elements: %d\n", count);
-    
-    return 0;
+    printf("count  of positive numbers  in array: %d\n",count_pos);
+    printf("count  of negative numbers  in array: %d",count_neg);
 }
-```
-## OUTPUT
-```
-Enter the number of elements: 5
-Enter 5 elements:
-10 -5 20 0 -1
-Total number of positive elements: 2
 
-Enter the number of elements: 3
-Enter 3 elements:
--1 -2 -3
-Total number of positive elements: 0
 ```
+
+## OUTPUT
+![Screenshot 2025-04-27 150632](https://github.com/user-attachments/assets/cfca22c6-72b5-45c1-bfa6-52d15c754121)
 
 ## RESULT
 Thus the program to count total number of positive elements in an array has been executed successfully.
@@ -235,50 +202,32 @@ To write a C program to replace all even elements with 'E' in one dimensional ar
 
 int main() {
     int n;
-    
-    printf("Enter the number of elements in the array: ");
     scanf("%d", &n);
-    
+
     int arr[n];
-    
-    printf("Enter the elements of the array:\n");
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
+
     for (int i = 0; i < n; i++) {
         if (arr[i] % 2 == 0) {
-            arr[i] = 'E'; 
+            arr[i] = 'E';  // Replacing even numbers with 'E'
         }
     }
-    
-    printf("Updated array:\n");
+
     for (int i = 0; i < n; i++) {
         if (arr[i] == 'E') {
-            printf("'E' ");
+            printf("E ");
         } else {
             printf("%d ", arr[i]);
         }
     }
-    
-    printf("\n");
-    
+
     return 0;
 }
 ```
 ## Output:
-```
-Enter the number of elements in the array: 5
-Enter the elements of the array:
-2 3 4 5 6
-Updated array:
-'E' 3 'E' 5 'E' 
-
-Enter the number of elements in the array: 4
-Enter the elements of the array:
-7 10 15 20
-Updated array:
-7 'E' 15 'E' 
-```
+![WhatsApp Image 2025-04-27 at 15 09 19_29145594](https://github.com/user-attachments/assets/8069572d-0579-4e34-acf8-50030e3aea5f)
 
 ## Result:
 
